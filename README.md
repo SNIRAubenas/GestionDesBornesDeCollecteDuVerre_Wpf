@@ -83,10 +83,10 @@ Administration BDD
 
 
 ## Diagrammes UML
-✔ Diagramme de cas d’utilisation
-✔ Diagramme de classes
-✔ Diagramme de séquence 
-✔ Diagramme de séquence 
+- Diagramme de cas d’utilisation
+- Diagramme de classes
+- Diagramme de séquence 
+- Diagramme de séquence 
 
 ## Technologies Utilisées
 C#
