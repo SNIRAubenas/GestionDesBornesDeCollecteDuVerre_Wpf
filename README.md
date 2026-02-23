@@ -12,7 +12,7 @@ La collecte du verre dans les villes est souvent :
 Le système actuel repose sur une collecte “à l’aveugle”.
 
 ## Objectif du Projet
-
+ 
 Améliorer la collecte du verre grâce à :
 
 - Des capteurs de niveau connectés
