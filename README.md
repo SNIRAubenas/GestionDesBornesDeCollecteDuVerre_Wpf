@@ -63,8 +63,8 @@ Application Desktop WPF (Windows)
 📡 Capteur
 
 
-## Répartition de l’Équipe (NOE)
-- Étudiant 1 – Acquisition & Transmission
+## Répartition de l’Équipe
+- Étudiant 1 – Acquisition & Transmission (NOE)
 Gestion des capteurs
 Mesures
 Transmission des données
