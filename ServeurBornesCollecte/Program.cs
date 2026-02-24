@@ -1,4 +1,4 @@
-﻿using System;
+﻿using ServeurBornesCollecte.Core;
 
 namespace ServeurBornesCollecte
 {
