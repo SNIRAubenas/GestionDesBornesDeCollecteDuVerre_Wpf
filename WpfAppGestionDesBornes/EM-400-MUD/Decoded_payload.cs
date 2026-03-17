@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfAppGestionDesBornes.EM_400_MUD
 {
+    // Contient les données décodées envoyées par le capteur
     internal class Decoded_payload
     {
         public double Battery {  get; set; }

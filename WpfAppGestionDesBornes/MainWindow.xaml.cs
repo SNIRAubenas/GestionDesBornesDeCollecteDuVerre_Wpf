@@ -21,20 +21,24 @@ namespace WpfAppGestionDesBornes
 
             try
             {
+                // Connexion au broker MQTT de The Things Network
                 client = new MqttClient("eu1.cloud.thethings.network");
 
+                // Événement déclenché lorsqu'un message est reçu
                 client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
 
+                // Identifiant unique du client MQTT
                 var clientId = Guid.NewGuid().ToString();
 
                 var subscriptionId = client.Subscribe(
                   new string[] { "#" },
                   new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
 
+                // Gestion des événements de connexion
                 client.ConnectionClosed += Client_ConnectionClosed;
-
                 client.MqttMsgSubscribed += Client_MqttMsgSubscribed;
 
+                // Connexion avec identifiants TTN
                 var connectionId = client.Connect(clientId,
                     "em310@ttn",
                     "NNSXS.WBSTJ75NW476RQWXJHUQQVZFOQ3FQR5NYCB5VKI.RWOQVMR4BUOJFHPNE2ECDDFSCDWGE45LUTGAYHDOOZ5FYHAZERQQ");
@@ -60,12 +64,16 @@ namespace WpfAppGestionDesBornes
         string jsonText;
         EM_400_Mud EM_400_Mud_Class;
 
+        // Méthode appelée lorsqu'un message MQTT est reçu
         void Client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
+            // Conversion du message binaire en texte JSON
             jsonText = Encoding.ASCII.GetString(e.Message);
 
+            // Désérialisation JSON → objet C#
             EM_400_Mud_Class = JsonConvert.DeserializeObject<EM_400_Mud>(jsonText);
 
+            // Vérification que les données existent
             if (EM_400_Mud_Class?.Uplink_Message?.Decoded_payload != null)
             {
                 int distance = (int)EM_400_Mud_Class.Uplink_Message.Decoded_payload.Distance;
@@ -73,6 +81,7 @@ namespace WpfAppGestionDesBornes
                 // Enregistrer dans la BDD
                 mesureService.SaveMesure(distance);
 
+                // Mise à jour de l'interface (thread UI)
                 Dispatcher.Invoke(() =>
                 {
                     lblConnected.Content = EM_400_Mud_Class.end_device_ids.Device_id;
@@ -94,6 +103,7 @@ namespace WpfAppGestionDesBornes
             Console.WriteLine("Client_ConnectionClosed: " + e.ToString());
         }
 
+        // Fermeture propre de la connexion MQTT
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (this.client.IsConnected)

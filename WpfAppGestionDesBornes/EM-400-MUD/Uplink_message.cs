@@ -10,6 +10,7 @@ namespace WpfAppGestionDesBornes.EM_400_MUD
     internal class Uplink_message
     {
         private string frm_payload;
+        // Payload encodé en Base64 envoyé par le capteur
         public string Frm_payload { 
             get
             {
@@ -18,10 +19,13 @@ namespace WpfAppGestionDesBornes.EM_400_MUD
             set
             {
                 frm_payload = value;
-                byte [] bytes = Convert.FromBase64String(value);
+                // Conversion Base64 → tableau d'octets
+                byte[] bytes = Convert.FromBase64String(value);
                 //AXVhA2fPAASCdQAFAAE=
                 byte [] test = Convert.FromBase64String("AXVhA2fPAASCdQAFAAE=");
+                // Objet qui contiendra les données décodées
                 Decoded_payload decoded = new Decoded_payload();
+                // Décodage du protocole propriétaire du capteur
                 for (var i = 0; i < bytes.Length;)
                 {
                     var channel_id = bytes[i++];
@@ -73,11 +77,14 @@ namespace WpfAppGestionDesBornes.EM_400_MUD
                         break;
                     }
                 }
+                // Sauvegarde du résultat décodé
                 Decoded_payload = decoded;
             }
         }
+        // Données lisibles après décodage
         public Decoded_payload Decoded_payload { get; set; }
-       // public Rx_metadata Rx_metadata { get; set; }
-       public Settings Settings {  get; set; }
+        // public Rx_metadata Rx_metadata { get; set; }
+        // Paramètres du message
+        public Settings Settings {  get; set; }
     }
 }
