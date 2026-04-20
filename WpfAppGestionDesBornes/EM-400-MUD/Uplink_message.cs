@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace WpfAppGestionDesBornes.EM_400_MUD
 {
     internal class Uplink_message
