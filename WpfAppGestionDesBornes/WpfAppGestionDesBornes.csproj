@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="M2Mqtt" Version="4.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.8" />
     <PackageReference Include="MySql.Data" Version="9.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>

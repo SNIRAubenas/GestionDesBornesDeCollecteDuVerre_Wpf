@@ -5,11 +5,35 @@ using uPLibrary.Networking.M2Mqtt;
 using uPLibrary.Networking.M2Mqtt.Messages;
 using WpfAppGestionDesBornes.Core;
 using WpfAppGestionDesBornes.EM_400_MUD;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
 
 namespace WpfAppGestionDesBornes
 {
     public partial class MainWindow : Window
     {
+        double lastDistance = 0;
+        double lastTemperature = 0;
+        double lastBattery = 0;
+
+        public void StartApi()
+        {
+            var builder = WebApplication.CreateBuilder();
+            var app = builder.Build();
+
+            app.MapGet("/api/data", () =>
+            {
+                return new
+                {
+                    distance = lastDistance,
+                    temperature = lastTemperature,
+                    battery = lastBattery
+                };
+            });
+
+            app.RunAsync("http://localhost:5000");
+        }
+
         MqttClient client;
 
         // Service de sauvegarde des données dans la BDD
@@ -18,6 +42,7 @@ namespace WpfAppGestionDesBornes
         public MainWindow()
         {
             InitializeComponent();
+            StartApi();
 
             try
             {
@@ -77,6 +102,10 @@ namespace WpfAppGestionDesBornes
             if (EM_400_Mud_Class?.Uplink_Message?.Decoded_payload != null)
             {
                 int distance = (int)EM_400_Mud_Class.Uplink_Message.Decoded_payload.Distance;
+
+                lastDistance = EM_400_Mud_Class.Uplink_Message.Decoded_payload.Distance;
+                lastTemperature = EM_400_Mud_Class.Uplink_Message.Decoded_payload.Temperature;
+                lastBattery = EM_400_Mud_Class.Uplink_Message.Decoded_payload.Battery;
 
                 // Enregistrer dans la BDD
                 mesureService.SaveMesure(distance);
