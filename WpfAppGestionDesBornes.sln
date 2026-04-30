@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppGestionDesBornes", "WpfAppGestionDesBornes\WpfAppGestionDesBornes.csproj", "{5D4C31C4-BC3F-4AFE-A22C-AC7CA74620BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionBorneVerreSQL", "..\..\..\Users\dpysarenko\Downloads\GestionBorneVerreSQL-master\GestionBorneVerreSQL\GestionBorneVerreSQL.csproj", "{B60A3B91-CFEC-207A-E764-B352E3970D2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5D4C31C4-BC3F-4AFE-A22C-AC7CA74620BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D4C31C4-BC3F-4AFE-A22C-AC7CA74620BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D4C31C4-BC3F-4AFE-A22C-AC7CA74620BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B60A3B91-CFEC-207A-E764-B352E3970D2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B60A3B91-CFEC-207A-E764-B352E3970D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B60A3B91-CFEC-207A-E764-B352E3970D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B60A3B91-CFEC-207A-E764-B352E3970D2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
