@@ -1,0 +1,46 @@
+﻿<Window x:Class="GestionBornesCollecte.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gestion des Bornes de Collecte"
+        Height="400" Width="500"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid Background="#F5F5F5">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+
+            <TextBlock Text="Gestion des Bornes de Collecte"
+                       FontSize="20" FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,8"/>
+
+            <TextBlock Text="Choisissez votre profil"
+                       FontSize="14" Foreground="#666666"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,40"/>
+
+            <Button Content="👤  Habitant"
+                    Width="260" Height="55"
+                    Margin="0,0,0,15"
+                    FontSize="16"
+                    Background="#4CAF50" Foreground="White"
+                    BorderThickness="0"
+                    Click="BtnHabitant_Click"/>
+
+            <Button Content="🚛  Éboueur (Agent de collecte)"
+                    Width="260" Height="55"
+                    Margin="0,0,0,15"
+                    FontSize="16"
+                    Background="#FF9800" Foreground="White"
+                    BorderThickness="0"
+                    Click="BtnEboueur_Click"/>
+
+            <Button Content="⚙️  Gestionnaire"
+                    Width="260" Height="55"
+                    FontSize="16"
+                    Background="#2196F3" Foreground="White"
+                    BorderThickness="0"
+                    Click="BtnGestionnaire_Click"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
